@@ -7,24 +7,56 @@ Created on
 Course work: 
 @author: raja
 Source:
-    https://realpython.com/testing-third-party-apis-with-mocks/
+    https://docs.pytest.org/en/latest/usage.html
 '''
 
 # Standard library imports...
-from unittest.mock import Mock, patch
-
-# Third-party imports...
-from nose.tools import assert_true
-import requests
-
-# Third-party imports...
-from nose.tools import assert_is_not_none
+# content of test_example.py
+import pytest
 
 
-def test_request_response():
-    
-    # Send a request to the API server and store the response.
-    response = requests.get('http://jsonplaceholder.typicode.com/todos')
+'''
+@pytest.fixture
+def error_fixture():
+    assert 0
+'''
 
-    # Confirm that the request-response cycle completed successfully.
-    assert_true(response.ok)
+
+def test_ok():
+    print("ok")
+
+def test_ok_1():
+    print("ok")
+
+def test_ok_2():
+    print("ok")
+
+def test_ok_3():
+    print("ok")
+
+
+'''
+def test_fail():
+    assert 0
+'''
+
+
+'''
+def test_error(error_fixture):
+    pass
+'''
+
+'''
+def test_skip():
+    pytest.skip("skipping this test")
+'''
+
+'''
+def test_xfail():
+    pytest.xfail("xfailing this test")
+
+
+@pytest.mark.xfail(reason="always xfail")
+def test_xpass():
+    pass
+'''
