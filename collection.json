@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "c2c35f7e-29d5-46ed-beef-d4c86416dcf1",
+		"name": "Misc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "web hook",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "abd44993-68c1-44a3-b709-28165a22b5ac",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://webhook.site/b414e959-0bea-4cdd-aaff-684779ad320a",
+					"protocol": "https",
+					"host": [
+						"webhook",
+						"site"
+					],
+					"path": [
+						"b414e959-0bea-4cdd-aaff-684779ad320a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20190319T222338Z.d93706c419b2d04f.80bc5f0f6f99967ee34e80c3612898353f492d06&text=Hello&lang=en-fr",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cfac07d3-b6d8-43ed-a65b-4b746afc8700",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"code\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20190319T222338Z.d93706c419b2d04f.80bc5f0f6f99967ee34e80c3612898353f492d06&text=Hello&lang=en-fr",
+					"protocol": "https",
+					"host": [
+						"translate",
+						"yandex",
+						"net"
+					],
+					"path": [
+						"api",
+						"v1.5",
+						"tr.json",
+						"translate"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "trnsl.1.1.20190319T222338Z.d93706c419b2d04f.80bc5f0f6f99967ee34e80c3612898353f492d06"
+						},
+						{
+							"key": "text",
+							"value": "Hello"
+						},
+						{
+							"key": "lang",
+							"value": "en-fr"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

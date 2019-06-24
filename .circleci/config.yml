@@ -2,7 +2,9 @@
 #
 # Check https://circleci.com/docs/2.0/language-python/ for more details
 #
-version: 2
+version: 2.1
+orbs:
+  newman: postman/newman@0.0.2
 jobs:
   build:
     docker:
@@ -55,3 +57,10 @@ jobs:
       - store_artifacts:
           path: test-reports
           destination: test-reports
+
+  newman-collection-run:
+    executor: newman/postman-newman-docker
+    steps:
+      - checkout
+      - newman/newman-run:
+          collection: ./collection.json
