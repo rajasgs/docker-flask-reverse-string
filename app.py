@@ -1,5 +1,5 @@
 # app.py - a minimal flask api using flask_restful
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 from flask_restful import Resource, Api
 
 application = Flask(__name__)
@@ -27,8 +27,16 @@ def hello():
 def reverse_name(name):
 
     reverse_name = name[::-1]
-
     return reverse_name
+
+@application.route('/env', methods=['GET'])
+def show_env():
+
+    env =  os.environ.get('app-env', "base")
+
+    response = jsonify({'env': env})
+    response.status_code = 200
+    return response
 
 @application.route('/', methods=['GET', 'POST'])
 def home():
