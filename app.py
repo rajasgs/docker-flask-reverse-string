@@ -1,6 +1,7 @@
 # app.py - a minimal flask api using flask_restful
 from flask import Flask, request, render_template, jsonify
 from flask_restful import Resource, Api
+import os
 
 application = Flask(__name__)
 api = Api(application)
