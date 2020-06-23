@@ -2,6 +2,7 @@
 from flask import Flask, request, render_template, jsonify
 from flask_restful import Resource, Api
 import os
+import requests
 
 application = Flask(__name__)
 api = Api(application)
@@ -36,6 +37,17 @@ def show_env():
     env =  os.environ.get('app-env', "base")
 
     response = jsonify({'env': env})
+    response.status_code = 200
+    return response
+
+@application.route('/service', methods=['GET'])
+def show_env():
+
+    result = requests.get('http://api.backend.local:5000/env')
+
+    result_json = result.json()
+
+    response = jsonify({'env2': result_json})
     response.status_code = 200
     return response
 
