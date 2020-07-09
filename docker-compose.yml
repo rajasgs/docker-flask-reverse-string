@@ -1,0 +1,9 @@
+express_sample:
+  build: .
+  command: python app.py
+  volumes:
+    - .:/home/app/api_sample
+  ports:
+    - "5000:5000"
+  environment:
+    app-env: "dev from docker compose"
